@@ -1686,6 +1686,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@devinikhiya/react-native-tesseractocr@npm:^0.1.10":
+  version: 0.1.10
+  resolution: "@devinikhiya/react-native-tesseractocr@npm:0.1.10"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/f3836305950d3a5f741373de950c9ca8be3de55d59190ea2d342c3f041df3781eaaca9e8a8fc612d38562ca17688b4ea838b3b38e256e3cf71bdf7b9a1e19003
+  languageName: node
+  linkType: hard
+
 "@eslint-community/eslint-utils@npm:^4.2.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -11269,6 +11279,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.21.5"
     "@babel/runtime": "npm:^7.21.5"
     "@craftzdog/react-native-buffer": "npm:^6.0.5"
+    "@devinikhiya/react-native-tesseractocr": "npm:^0.1.10"
     "@fugood/react-native-audio-pcm-stream": "npm:^1.1.4"
     "@react-native-community/eslint-config": "npm:^3.2.0"
     "@shopify/react-native-skia": "npm:^0.1.227"

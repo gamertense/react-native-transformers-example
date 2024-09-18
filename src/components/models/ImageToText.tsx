@@ -1,8 +1,9 @@
+import Button from '@/components/form/Button'
+import TextField from '@/components/form/TextField'
 import { usePhoto } from '@/hooks/photo'
+import TesseractOcr from '@devinikhiya/react-native-tesseractocr'
 import React, { useState } from 'react'
 import { Image, StyleSheet } from 'react-native'
-import Button from '../form/Button'
-import TextField from '../form/TextField'
 
 interface ImageToTextProps {}
 
@@ -14,10 +15,15 @@ export function ImageToText({}: ImageToTextProps) {
   const { selectPhoto, takePhoto } = usePhoto(async imageUri => {
     if (!imageUri) return
 
+    setImage(imageUri)
     try {
-      setImage(imageUri)
-      console.log('🚀 ~ ImageToText ~ output:', output)
-      // setOutput(text)
+      const recognizedText = await TesseractOcr.recognize(
+        imageUri,
+        'chi_sim',
+        {},
+      )
+      console.log('🚀 ~ ImageToText ~ result:', recognizedText)
+      setOutput(recognizedText)
     } catch (error) {
       console.error('Failed to convert image to text', error)
     }
