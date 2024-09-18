@@ -1,16 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import Section from '@/components/form/Section'
-import Models from '@/components/models'
-import { ImageToText } from '@/components/models/ImageToText'
-import Progress from '@/components/Progress'
+import LoadingOverlay from '@/components/LoadingOverlay'
+import { Summarization } from '@/components/models/Summarization'
 import { useColor } from '@/utils/style'
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import {
   SafeAreaView,
   ScrollView,
@@ -21,8 +13,6 @@ import {
   View,
 } from 'react-native'
 
-const tasks = Object.keys(Models)
-
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark'
   const backgroundColor = useColor('background')
@@ -30,23 +20,9 @@ function App(): JSX.Element {
   const textColor = { color }
 
   const [download, setDownload] = useState<object>({})
-  const [isLoading, setLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const backgroundStyle = { backgroundColor }
-
-  const onProgress = useCallback((event: any) => {
-    if (event?.file) {
-      const { file, status, progress } = event
-      setLoading(true)
-      setDownload(prev => ({
-        ...prev,
-        [file]: { status, progress },
-      }))
-    }
-    if (event?.status === 'ready') {
-      setLoading(false)
-    }
-  }, [])
 
   return (
     <SafeAreaView style={backgroundStyle}>
@@ -54,6 +30,9 @@ function App(): JSX.Element {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundColor}
       />
+
+      <LoadingOverlay />
+
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
@@ -61,21 +40,9 @@ function App(): JSX.Element {
           <Text style={[styles.title, textColor]}>Transformers.js</Text>
           <Section title="Interact">
             {/* <Translation /> */}
-            <ImageToText />
-            {/* <Summarization /> */}
+            {/* <ImageToText /> */}
+            <Summarization setIsLoading={setIsLoading} />
           </Section>
-          {isLoading && (
-            <Section title="Progress">
-              {Object.entries(download).map(([key, { progress, status }]) => (
-                <Progress
-                  key={key}
-                  title={key}
-                  value={progress}
-                  status={status}
-                />
-              ))}
-            </Section>
-          )}
         </View>
       </ScrollView>
     </SafeAreaView>

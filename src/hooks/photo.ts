@@ -11,8 +11,6 @@ type UpdateCallback = (imageUri: string | undefined) => void
 export const usePhoto = (onUpdate?: UpdateCallback) => {
   const handleResponse = useCallback(
     (res: ImagePickerResponse) => {
-      console.log('🚀 ~ usePhoto ~ res:', res)
-
       if (res.assets?.length) {
         const [asset] = res.assets
         if (asset.width && asset.height) {
