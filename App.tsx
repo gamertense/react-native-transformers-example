@@ -7,7 +7,7 @@
 
 import Section from '@/components/form/Section'
 import Models from '@/components/models'
-import { Summarization } from '@/components/models/Summarization'
+import { ImageToText } from '@/components/models/ImageToText'
 import Progress from '@/components/Progress'
 import { useColor } from '@/utils/style'
 import React, { useCallback, useState } from 'react'
@@ -61,8 +61,8 @@ function App(): JSX.Element {
           <Text style={[styles.title, textColor]}>Transformers.js</Text>
           <Section title="Interact">
             {/* <Translation /> */}
-            {/* <ImageToText /> */}
-            <Summarization />
+            <ImageToText />
+            {/* <Summarization /> */}
           </Section>
           {isLoading && (
             <Section title="Progress">

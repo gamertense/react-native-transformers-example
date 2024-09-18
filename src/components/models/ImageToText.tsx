@@ -12,6 +12,8 @@ export function ImageToText({}: ImageToTextProps) {
   const [isWIP, setWIP] = useState<boolean>(false)
 
   const { selectPhoto, takePhoto } = usePhoto(async imageUri => {
+    if (!imageUri) return
+
     try {
       setImage(imageUri)
       console.log('🚀 ~ ImageToText ~ output:', output)
