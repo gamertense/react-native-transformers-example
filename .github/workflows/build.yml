@@ -1,5 +1,5 @@
 name: CI
-on: 
+on:
   push:
     paths:
       - 'package.json'
@@ -8,7 +8,7 @@ on:
       - 'android/**'
       - 'patches/**'
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
       - 'package.json'
       - 'yarn.lock'
@@ -21,7 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test-ios:
+  build-ios:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v3
@@ -52,7 +52,7 @@ jobs:
           yarn
           cd ios && pod install && cd ..
           xcodebuild -workspace ios/transformers_example.xcworkspace -scheme transformers_example -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build
-  test-android:
+  build-android:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v3
