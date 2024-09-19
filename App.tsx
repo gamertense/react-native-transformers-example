@@ -1,6 +1,5 @@
 import Section from '@/components/form/Section'
-import LoadingOverlay from '@/components/LoadingOverlay'
-import { Summarization } from '@/components/models/Summarization'
+import { ImageToText } from '@/components/models/ImageToText'
 import { useColor } from '@/utils/style'
 import React, { useState } from 'react'
 import {
@@ -31,7 +30,7 @@ function App(): JSX.Element {
         backgroundColor={backgroundColor}
       />
 
-      <LoadingOverlay />
+      {/* <LoadingOverlay /> */}
 
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
@@ -40,8 +39,8 @@ function App(): JSX.Element {
           <Text style={[styles.title, textColor]}>Transformers.js</Text>
           <Section title="Interact">
             {/* <Translation /> */}
-            {/* <ImageToText /> */}
-            <Summarization setIsLoading={setIsLoading} />
+            <ImageToText />
+            {/* <Summarization setIsLoading={setIsLoading} /> */}
           </Section>
         </View>
       </ScrollView>

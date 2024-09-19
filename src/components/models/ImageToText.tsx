@@ -5,6 +5,11 @@ import TesseractOcr from '@devinikhiya/react-native-tesseractocr'
 import React, { useState } from 'react'
 import { Image, StyleSheet } from 'react-native'
 
+enum TesseractLanguages {
+  French = 'fra',
+  SimplifiedChinese = 'chi_sim',
+}
+
 interface ImageToTextProps {}
 
 export function ImageToText({}: ImageToTextProps) {
@@ -19,7 +24,7 @@ export function ImageToText({}: ImageToTextProps) {
     try {
       const recognizedText = await TesseractOcr.recognize(
         imageUri,
-        'chi_sim',
+        TesseractLanguages.French,
         {},
       )
       console.log('🚀 ~ ImageToText ~ result:', recognizedText)
