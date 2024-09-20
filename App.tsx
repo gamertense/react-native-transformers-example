@@ -1,18 +1,19 @@
-import { HomeScreen } from '@/screens'
-import TranslateScreen from '@/screens/TranslateScreen'
+import { HomeScreen, SummarizeScreen, TranslateScreen } from '@/screens'
+import { RootStackParamList } from '@/types/navigationTypes'
 import { NavigationContainer } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
-const Stack = createNativeStackNavigator()
+const RootStack = createStackNavigator<RootStackParamList>()
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Translate" component={TranslateScreen} />
-      </Stack.Navigator>
+      <RootStack.Navigator>
+        <RootStack.Screen name="Home" component={HomeScreen} />
+        <RootStack.Screen name="Translate" component={TranslateScreen} />
+        <RootStack.Screen name="Summarize" component={SummarizeScreen} />
+      </RootStack.Navigator>
     </NavigationContainer>
   )
 }

@@ -12,11 +12,16 @@ enum TesseractLanguages {
 
 interface ImageToTextProps {
   setIsLoading: (isLoading: boolean) => void
+  textToTranslate: string
+  setTextToTranslate: (text: string) => void
 }
 
-export function ImageToText({ setIsLoading }: ImageToTextProps) {
+export function ImageToText({
+  setIsLoading,
+  textToTranslate,
+  setTextToTranslate,
+}: ImageToTextProps) {
   const [image, setImage] = useState<string | null>(null)
-  const [output, setOutput] = useState<string>('')
 
   const { selectPhoto, takePhoto } = usePhoto(async imageUri => {
     if (!imageUri) return
@@ -30,7 +35,8 @@ export function ImageToText({ setIsLoading }: ImageToTextProps) {
         {},
       )
       console.log('🚀 ~ ImageToText ~ result:', recognizedText)
-      setOutput(recognizedText)
+
+      setTextToTranslate(recognizedText)
     } catch (error) {
       console.error('Failed to convert image to text', error)
     } finally {
@@ -43,7 +49,12 @@ export function ImageToText({ setIsLoading }: ImageToTextProps) {
       <Button title="Take Photo & Inference" onPress={takePhoto} />
       <Button title="Select Photo & Inference" onPress={selectPhoto} />
       {image && <Image style={styles.image} source={{ uri: image }} />}
-      <TextField title="Output" value={output} editable={false} multiline />
+      <TextField
+        title="Output"
+        value={textToTranslate}
+        editable={false}
+        multiline
+      />
     </>
   )
 }
