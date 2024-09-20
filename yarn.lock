@@ -1321,6 +1321,23 @@
   resolved "https://registry.yarnpkg.com/@fugood/react-native-audio-pcm-stream/-/react-native-audio-pcm-stream-1.1.4.tgz#f7781773fac8a0ad82e60cc6e80d20b4778bd694"
   integrity sha512-M6H6ay4ea0vpioII9T/C9qXFPeGpxGN24nl0REP2/wtsorZXg3zzHjZbf3UUUwjf6lEEHMlGCJfXUsxwC/vV8w==
 
+"@fugood/transformers@^2.17.2-beta.2":
+  version "2.17.2-beta.2"
+  resolved "https://registry.yarnpkg.com/@fugood/transformers/-/transformers-2.17.2-beta.2.tgz#07164f24e882b03f68c65c4a80d200621d8a4a6c"
+  integrity sha512-gLx0fEld7N8iIHBkYRXwdqJh9csePtpfDq9RunQ0F/T7PpVo8HtzZyOWXAombcONFPuTbx2w8yVs5KuXZZpdnA==
+  dependencies:
+    "@huggingface/jinja" "^0.2.2"
+    image-codecs "^0.1.0"
+    node-wav "^0.0.2"
+    onnxruntime-web "^1.17.0"
+    sharp "^0.32.0"
+  optionalDependencies:
+    browserify-zlib "^0.2.0"
+    onnxruntime-node "^1.17.0"
+    onnxruntime-react-native "^1.17.0"
+    path-browserify "^1.0.1"
+    react-native-fs "^2.20.0"
+
 "@hapi/hoek@^9.0.0", "@hapi/hoek@^9.3.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
@@ -2274,22 +2291,6 @@
   version "0.1.21"
   resolved "https://registry.yarnpkg.com/@webgpu/types/-/types-0.1.21.tgz#b181202daec30d66ccd67264de23814cfd176d3a"
   integrity sha512-pUrWq3V5PiSGFLeLxoGqReTZmiiXwY3jRkIG5sLLKjyqNxrwm/04b4nw7LSmGWJcKk59XOM/YRTUwOzo4MMlow==
-
-"@xenova/transformers@https://github.com/hans00/transformers.js.git#merge":
-  version "2.17.2"
-  resolved "https://github.com/hans00/transformers.js.git#918950ed205e1ea2ec8c94a8b9eab57794748f76"
-  dependencies:
-    "@huggingface/jinja" "^0.2.2"
-    image-codecs "^0.1.0"
-    node-wav "^0.0.2"
-    onnxruntime-web "^1.17.0"
-    sharp "^0.32.0"
-  optionalDependencies:
-    browserify-zlib "^0.2.0"
-    onnxruntime-node "^1.17.0"
-    onnxruntime-react-native "^1.17.0"
-    path-browserify "^1.0.1"
-    react-native-fs "^2.20.0"
 
 "@xmldom/xmldom@^0.8.8":
   version "0.8.10"

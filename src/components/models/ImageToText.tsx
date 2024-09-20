@@ -3,7 +3,7 @@ import TextField from '@/components/form/TextField'
 import { usePhoto } from '@/hooks/photo'
 import TesseractOcr from '@devinikhiya/react-native-tesseractocr'
 import React, { useState } from 'react'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, StyleSheet } from 'react-native'
 
 enum TesseractLanguages {
   French = 'fra',
@@ -35,7 +35,7 @@ export function ImageToText({}: ImageToTextProps) {
   })
 
   return (
-    <View className="bg-pink-400">
+    <>
       <Button
         title="Take Photo & Inference"
         onPress={takePhoto}
@@ -50,7 +50,7 @@ export function ImageToText({}: ImageToTextProps) {
         <Image style={styles.image} source={{ uri: image }} />
       )}
       <TextField title="Output" value={output} editable={false} multiline />
-    </View>
+    </>
   )
 }
 

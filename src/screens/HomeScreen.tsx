@@ -1,24 +1,25 @@
-import { ImageToText } from '@/components/models/ImageToText'
+import LoadingOverlay from '@/components/LoadingOverlay'
+import { Translation } from '@/components/models/Translation'
 import { useColor } from '@/utils/style'
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView, StatusBar, useColorScheme } from 'react-native'
 
 function HomeScreen() {
   const isDarkMode = useColorScheme() === 'dark'
   const backgroundColor = useColor('background')
-  const color = useColor('foreground')
-  const textColor = { color }
-
   const backgroundStyle = { backgroundColor }
 
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <SafeAreaView style={backgroundStyle} className="p-4 flex-1">
       <StatusBar
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundColor}
       />
 
-      <ImageToText />
+      {isLoading && <LoadingOverlay />}
+      <Translation setIsLoading={setIsLoading} />
     </SafeAreaView>
   )
 }

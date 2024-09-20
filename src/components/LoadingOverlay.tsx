@@ -3,7 +3,9 @@ import { ActivityIndicator, StyleSheet, View } from 'react-native'
 
 const LoadingOverlay = () => {
   return (
-    <View style={styles.overlay}>
+    <View
+      style={styles.overlay}
+      className="bg-gray-800 opacity-50 justify-center items-center z-50">
       <ActivityIndicator size="large" color="#ffffff" />
     </View>
   )
@@ -12,11 +14,6 @@ const LoadingOverlay = () => {
 const styles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(128, 128, 128, 0.8)', // Gray background with some transparency
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    zIndex: 1,
   },
 })
 

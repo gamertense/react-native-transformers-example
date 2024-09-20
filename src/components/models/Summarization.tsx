@@ -1,4 +1,4 @@
-import { pipeline } from '@xenova/transformers'
+import { pipeline, SummarizationSingle } from '@fugood/transformers'
 import React, { useCallback, useState } from 'react'
 import Button from '../form/Button'
 import TextField from '../form/TextField'
@@ -31,24 +31,24 @@ export function Summarization({ setIsLoading }: SummarizationProps) {
     setIsLoading(true)
     try {
       console.log('🚀 Loading pipeline...')
-      const summarizer = await pipeline('summarization', null, {
-        progress_callback: onProgress,
-      })
+      const summarizer = await pipeline('summarization')
       console.log('🚀 Summarizing...')
-      const outputList: SummarizationResult[] = await summarizer(input, {
+      const outputList = await summarizer(input, {
         do_sample: false,
         max_new_tokens: 50,
         num_beams: 1,
         temperature: 1,
         top_k: 0,
       })
+
       console.log('🚀 Output', outputList)
 
       if (outputList.length < 0) {
         return
       }
 
-      setOutput(outputList[0]?.summary_text)
+      const summaryText = (outputList[0] as SummarizationSingle).summary_text
+      setOutput(summaryText)
     } catch (error) {
       console.error('Failed to summarize', error)
     } finally {
