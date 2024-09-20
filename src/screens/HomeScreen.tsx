@@ -1,10 +1,16 @@
-import Button from '@/components/form/Button'
 import { ImageToText } from '@/components/ImageToText'
 import LoadingOverlay from '@/components/LoadingOverlay'
 import { useColor } from '@/utils/style'
 import React, { useState } from 'react'
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native'
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  useColorScheme,
+} from 'react-native'
 
+import { Button } from '@/components/ui'
+import { Routes } from '@/types/navigationTypes'
 import { NavigationProp } from '@react-navigation/native'
 
 type HomeScreenProps = {
@@ -20,7 +26,7 @@ function HomeScreen({ navigation }: HomeScreenProps) {
   const [textToTranslate, setTextToTranslate] = useState<string>('')
 
   const onPressTranslate = () => {
-    navigation.navigate('Translate', {
+    navigation.navigate(Routes.Translate, {
       textToTranslate,
     })
   }
@@ -34,14 +40,21 @@ function HomeScreen({ navigation }: HomeScreenProps) {
 
       {isLoading && <LoadingOverlay />}
 
-      <ImageToText
-        setIsLoading={setIsLoading}
-        textToTranslate={textToTranslate}
-        setTextToTranslate={setTextToTranslate}
-      />
+      <ScrollView>
+        <ImageToText
+          setIsLoading={setIsLoading}
+          textToTranslate={textToTranslate}
+          setTextToTranslate={setTextToTranslate}
+        />
+      </ScrollView>
 
       {textToTranslate && (
-        <Button title="Translate" onPress={onPressTranslate} />
+        <Button
+          title="Translate"
+          onPress={onPressTranslate}
+          variant="primary"
+          className="mt-4"
+        />
       )}
     </SafeAreaView>
   )

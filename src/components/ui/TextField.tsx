@@ -1,6 +1,6 @@
 import { useColor } from '@/utils/style'
 import React from 'react'
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { Text, TextInput, View } from 'react-native'
 
 interface Props {
   title?: string
@@ -18,10 +18,17 @@ export default function TextField(props: Props): JSX.Element {
   const textColor = { color }
 
   return (
-    <View style={styles.container}>
-      {title && <Text style={[styles.title, textColor]}>{title}</Text>}
+    <View className="my-1">
+      {title && (
+        <Text className="text-lg font-bold mb-1" style={textColor}>
+          {title}
+        </Text>
+      )}
       <TextInput
-        style={[styles.input, textColor, multiline && styles.multiline]}
+        className={`border border-gray-400 p-2 rounded ${
+          multiline ? 'text-top' : ''
+        }`}
+        style={textColor}
         onChangeText={onChange}
         value={value ?? ''}
         placeholder={placeholder}
@@ -31,25 +38,3 @@ export default function TextField(props: Props): JSX.Element {
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginVertical: 4,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 8,
-  },
-  multiline: {
-    height: 100,
-    textAlignVertical: 'top',
-  },
-})

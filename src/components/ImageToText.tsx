@@ -1,5 +1,4 @@
-import Button from '@/components/form/Button'
-import TextField from '@/components/form/TextField'
+import { Button, TextField } from '@/components/ui'
 import { usePhoto } from '@/hooks/photo'
 import TesseractOcr from '@devinikhiya/react-native-tesseractocr'
 import React, { useState } from 'react'
@@ -46,8 +45,8 @@ export function ImageToText({
 
   return (
     <>
-      <Button title="Take Photo & Inference" onPress={takePhoto} />
-      <Button title="Select Photo & Inference" onPress={selectPhoto} />
+      <Button title="Take Photo & Extract" onPress={takePhoto} />
+      <Button title="Select Photo & Extract" onPress={selectPhoto} />
       {image && <Image style={styles.image} source={{ uri: image }} />}
       <TextField
         title="Output"

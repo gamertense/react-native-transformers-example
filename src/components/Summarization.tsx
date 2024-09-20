@@ -1,13 +1,7 @@
 import { pipeline, SummarizationSingle } from '@fugood/transformers'
 import React, { useState } from 'react'
-import Button from './form/Button'
-import TextField from './form/TextField'
-
-interface PipelineEventStatus {
-  file: string
-  name: string
-  status: string
-}
+import { View } from 'react-native'
+import { Button, TextField } from './ui'
 
 interface SummarizationProps {
   setIsLoading: (isLoading: boolean) => void
@@ -56,7 +50,9 @@ export function Summarization({
     <>
       <TextField title="Input" value={input} onChange={setInput} multiline />
       <TextField title="Output" value={output} editable={false} multiline />
-      <Button title="Summarize" onPress={summarize} />
+      <View className="flex-grow" />
+
+      <Button title="Summarize" onPress={summarize} variant="primary" />
     </>
   )
 }

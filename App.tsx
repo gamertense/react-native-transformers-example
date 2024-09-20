@@ -1,5 +1,5 @@
 import { HomeScreen, SummarizeScreen, TranslateScreen } from '@/screens'
-import { RootStackParamList } from '@/types/navigationTypes'
+import { RootStackParamList, Routes } from '@/types/navigationTypes'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
@@ -10,9 +10,9 @@ function App() {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
-        <RootStack.Screen name="Home" component={HomeScreen} />
-        <RootStack.Screen name="Translate" component={TranslateScreen} />
-        <RootStack.Screen name="Summarize" component={SummarizeScreen} />
+        <RootStack.Screen name={Routes.Home} component={HomeScreen} />
+        <RootStack.Screen name={Routes.Translate} component={TranslateScreen} />
+        <RootStack.Screen name={Routes.Summarize} component={SummarizeScreen} />
       </RootStack.Navigator>
     </NavigationContainer>
   )

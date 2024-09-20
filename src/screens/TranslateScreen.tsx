@@ -1,12 +1,17 @@
-import Button from '@/components/form/Button'
-import TextField from '@/components/form/TextField'
 import LoadingOverlay from '@/components/LoadingOverlay'
+import { Button, TextField } from '@/components/ui'
 import { useColor } from '@/utils/style'
 import { pipeline, TranslationSingle } from '@fugood/transformers'
 import React, { useCallback, useState } from 'react'
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native'
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  useColorScheme,
+  View,
+} from 'react-native'
 
-import { RootStackParamList } from '@/types/navigationTypes'
+import { RootStackParamList, Routes } from '@/types/navigationTypes'
 import { StackScreenProps } from '@react-navigation/stack'
 
 type TranslateScreenProps = StackScreenProps<RootStackParamList, 'Translate'>
@@ -29,7 +34,7 @@ function TranslateScreen({ route, navigation }: TranslateScreenProps) {
     try {
       const translator = await pipeline('translation', 'Xenova/opus-mt-fr-en')
       const outputList = await translator(input)
-      console.log('🚀 ~ call ~ output:', outputList)
+      console.log('🚀 ~ Translation:', outputList)
 
       if (outputList.length < 0) {
         return
@@ -46,7 +51,7 @@ function TranslateScreen({ route, navigation }: TranslateScreenProps) {
   }, [input])
 
   const onPressSummarize = () => {
-    navigation.navigate('Summarize', {
+    navigation.navigate(Routes.Summarize, {
       textToSummarize: translatedText,
     })
   }
@@ -60,17 +65,30 @@ function TranslateScreen({ route, navigation }: TranslateScreenProps) {
 
       {isLoading && <LoadingOverlay />}
 
-      <TextField title="Input" value={input} onChange={setInput} multiline />
-      <TextField
-        title="Output"
-        value={translatedText}
-        editable={false}
-        multiline
+      <ScrollView className="mb-4">
+        <TextField title="Input" value={input} onChange={setInput} multiline />
+        <TextField
+          title="Output"
+          value={translatedText}
+          editable={false}
+          multiline
+        />
+      </ScrollView>
+
+      <View className="flex-grow" />
+
+      <Button
+        title="Translate"
+        onPress={translate}
+        variant={translatedText.trim() === '' ? 'primary' : 'default'}
       />
-      <Button title="Translate" onPress={translate} />
 
       {translatedText.trim() !== '' && (
-        <Button title="Summarize" onPress={onPressSummarize} />
+        <Button
+          title="Summarize"
+          onPress={onPressSummarize}
+          variant="primary"
+        />
       )}
     </SafeAreaView>
   )
