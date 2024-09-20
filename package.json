@@ -25,6 +25,7 @@
     "image-decode": "^1.2.2",
     "image-encode": "^1.3.1",
     "mp3": "^0.1.0",
+    "nativewind": "^2.0.11",
     "node-fetch": "^2.6.7",
     "node-wav": "^0.0.2",
     "onnxruntime-react-native": "1.17.0",
@@ -68,6 +69,7 @@
     "patch-package": "^7.0.0",
     "prettier": "^2.4.1",
     "react-test-renderer": "18.2.0",
+    "tailwindcss": "3.3.2",
     "typescript": "4.8.4"
   },
   "jest": {
@@ -79,6 +81,5 @@
     "xml2js": "^0.5.0",
     "onnxruntime-common": "1.17.0",
     "onnxruntime-react-native": "1.17.0"
-  },
-  "packageManager": "yarn@4.5.0"
+  }
 }

@@ -3,10 +3,11 @@ module.exports = {
   plugins: [
     '@babel/plugin-proposal-export-namespace-from',
     'babel-plugin-transform-import-meta',
+    'nativewind/babel',
     [
       'module-resolver',
       {
-        root: ['./src'],
+        root: ['./'],
         alias: {
           '@': './src',
         },
