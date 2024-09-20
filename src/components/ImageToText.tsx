@@ -10,17 +10,19 @@ enum TesseractLanguages {
   SimplifiedChinese = 'chi_sim',
 }
 
-interface ImageToTextProps {}
+interface ImageToTextProps {
+  setIsLoading: (isLoading: boolean) => void
+}
 
-export function ImageToText({}: ImageToTextProps) {
+export function ImageToText({ setIsLoading }: ImageToTextProps) {
   const [image, setImage] = useState<string | null>(null)
   const [output, setOutput] = useState<string>('')
-  const [isWIP, setWIP] = useState<boolean>(false)
 
   const { selectPhoto, takePhoto } = usePhoto(async imageUri => {
     if (!imageUri) return
 
     setImage(imageUri)
+    setIsLoading(true)
     try {
       const recognizedText = await TesseractOcr.recognize(
         imageUri,
@@ -31,24 +33,16 @@ export function ImageToText({}: ImageToTextProps) {
       setOutput(recognizedText)
     } catch (error) {
       console.error('Failed to convert image to text', error)
+    } finally {
+      setIsLoading(false)
     }
   })
 
   return (
     <>
-      <Button
-        title="Take Photo & Inference"
-        onPress={takePhoto}
-        disabled={isWIP}
-      />
-      <Button
-        title="Select Photo & Inference"
-        onPress={selectPhoto}
-        disabled={isWIP}
-      />
-      {!isWIP && image && (
-        <Image style={styles.image} source={{ uri: image }} />
-      )}
+      <Button title="Take Photo & Inference" onPress={takePhoto} />
+      <Button title="Select Photo & Inference" onPress={selectPhoto} />
+      {image && <Image style={styles.image} source={{ uri: image }} />}
       <TextField title="Output" value={output} editable={false} multiline />
     </>
   )

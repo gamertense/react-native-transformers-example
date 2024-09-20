@@ -1,5 +1,5 @@
+import { ImageToText } from '@/components/ImageToText'
 import LoadingOverlay from '@/components/LoadingOverlay'
-import { Summarization } from '@/components/models/Summarization'
 import { useColor } from '@/utils/style'
 import React, { useState } from 'react'
 import { SafeAreaView, StatusBar, useColorScheme } from 'react-native'
@@ -19,7 +19,7 @@ function HomeScreen() {
       />
 
       {isLoading && <LoadingOverlay />}
-      <Summarization setIsLoading={setIsLoading} />
+      <ImageToText setIsLoading={setIsLoading} />
     </SafeAreaView>
   )
 }

@@ -1,4 +1,5 @@
 import { HomeScreen } from '@/screens'
+import TranslateScreen from '@/screens/TranslateScreen'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
@@ -10,6 +11,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Translate" component={TranslateScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
