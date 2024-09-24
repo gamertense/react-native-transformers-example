@@ -21,7 +21,10 @@ export function Summarization({
     setIsLoading(true)
     try {
       console.log('🚀 Loading pipeline...')
-      const summarizer = await pipeline('summarization')
+      const summarizer = await pipeline(
+        'summarization',
+        'Xenova/distilbart-cnn-6-6',
+      )
       console.log('🚀 Summarizing...')
       const outputList = await summarizer(input, {
         do_sample: false,
