@@ -10,7 +10,11 @@ function App() {
   return (
     <NavigationContainer>
       <RootStack.Navigator>
-        <RootStack.Screen name={Routes.Home} component={HomeScreen} />
+        <RootStack.Screen
+          name={Routes.Home}
+          component={HomeScreen}
+          options={{ title: 'Extract text' }}
+        />
         <RootStack.Screen name={Routes.Translate} component={TranslateScreen} />
         <RootStack.Screen name={Routes.Summarize} component={SummarizeScreen} />
       </RootStack.Navigator>

@@ -2,7 +2,7 @@ import { Button, TextField } from '@/components/ui'
 import { usePhoto } from '@/hooks/photo'
 import TesseractOcr from '@devinikhiya/react-native-tesseractocr'
 import React, { useState } from 'react'
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, View } from 'react-native'
 
 enum TesseractLanguages {
   French = 'fra',
@@ -45,10 +45,6 @@ export function ImageToText({
 
   return (
     <>
-      <Text className="text-2xl font-bold text-center mb-4">
-        Extract text from image
-      </Text>
-
       {image && (
         <View className="mb-4">
           <Image style={styles.image} source={{ uri: image }} />
@@ -61,8 +57,8 @@ export function ImageToText({
         </View>
       )}
 
-      <Button title="Take Photo & Extract" onPress={takePhoto} />
-      <Button title="Select Photo & Extract" onPress={selectPhoto} />
+      <Button title="Take Photo" onPress={takePhoto} />
+      <Button title="Select Photo" onPress={selectPhoto} />
     </>
   )
 }

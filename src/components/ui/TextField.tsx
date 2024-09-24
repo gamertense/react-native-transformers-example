@@ -1,5 +1,4 @@
 import { useColor } from '@/utils/style'
-import React from 'react'
 import { Text, TextInput, View } from 'react-native'
 
 interface Props {
@@ -18,14 +17,14 @@ export default function TextField(props: Props): JSX.Element {
   const textColor = { color }
 
   return (
-    <View className="my-1">
+    <View className="my-2">
       {title && (
-        <Text className="text-lg font-bold mb-1" style={textColor}>
+        <Text className="text-lg font-bold mb-2" style={textColor}>
           {title}
         </Text>
       )}
       <TextInput
-        className={`border border-gray-400 p-2 rounded ${
+        className={`border border-gray-300 p-3 rounded-lg bg-white shadow-sm ${
           multiline ? 'text-top' : ''
         }`}
         style={textColor}
@@ -34,6 +33,7 @@ export default function TextField(props: Props): JSX.Element {
         placeholder={placeholder}
         editable={editable}
         multiline={multiline}
+        placeholderTextColor={color}
       />
     </View>
   )
